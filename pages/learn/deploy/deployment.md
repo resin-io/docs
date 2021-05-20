@@ -56,23 +56,23 @@ The emulated builds will also happen on the rare occasion that the native ARM bu
 The `--nocache` flag causes a fresh image build to take place, preventing the use of cached imaged layers from previous builds of this project. This is useful to
 ensure that the latest base image and packages are pulled. Note that the build logs may still display the message _"Pulling previous images for caching purposes,"_ because the cloud builder needs the previous images in order to prepare [delta updates](https://www.balena.io/docs/learn/deploy/delta/). When `--nocache` is used, the build logs will not display the "Using cache" lines for each build step of a Dockerfile.
 
+Note: Refer to the [`{{$names.company.lower}} push` command reference][cli-push-reference] for additional documentation.
+
 ## {{$names.company.upper}} Build & Deploy
 
 ### Overview
 
-The `{{$names.company.lower}} deploy` command is functionally very similar to [{{$names.company.lower}} push](#balena-push) but it avoids pushing any source code to the [{{$names.cloud.lower}} build server](#the-balenacloud-build-server). It allows you more control over how and where your container images are built. `{{$names.company.lower}} deploy` can fairly easily be integrated into your own [CI/CD][continuous-deployment] build system.
-
-In `{{$names.company.lower}} deploy` the container images are built on your laptop or development machine, and depending on your fleet's targeted CPU architecture, has the option to run [qemu][qemu] emulated builds.
+The `{{$names.company.lower}} deploy` and `{{$names.company.lower}} build` commands are functionally very similar to [{{$names.company.lower}} push](#balena-push) but avoid pushing any source code to the [{{$names.cloud.lower}} build server](#the-balenacloud-build-server). It gives more control over how and where your container images are built, which allows integrating your own [CI/CD][continuous-deployment] build system.
 
 ![How {{$names.company.lower}} deploy works](/img/common/deployment/balena-deploy.jpg)
 
-`{{$names.company.lower}} deploy` will build all your container images on the machine the command is run on (or on a specified docker daemon), and upon success, it will upload the images to the {{$names.cloud.lower}} image registry and then create a release entry in the [{{$names.company.lower}} API][api] database. The devices in the application will then be notified of a new release and download it. In order to build containers you will need to have [Docker installed][docker-install] on your development machine, and you should be able to execute [Docker commands as a non-root user][docker-post-install]. It is not necessary to install Docker on your development machine if you choose to use a device running {{$names.os.lower}} to build the images (a [development image][development-image] is then required), by specifying a docker daemon's IP address and port number with the relevant command-line options.
+With  `{{$names.company.lower}} build` container images are built on your development machine or on a remote machine, by specifying a docker daemon's IP address and port number with the relevant command-line options (for example a device running a {{$names.os.lower}} [development image][development-image]). Depending on your fleet's targeted CPU architecture builds will be run emulated via [qemu][qemu].
+
+If you are building your own container images, `{{$names.company.lower}} deploy` will upload the images to the {{$names.cloud.lower}} image registry and then create a release entry in the [{{$names.company.lower}} API][api] database. The devices in the application will then be notified of a new release and download it. Should `{{$names.company.lower}} deploy` not find the required images on the specified docker daemon it will automatically trigger a build.
 
 Like `{{$names.company.lower}} push` it is also independent of git, and you can use any version control system you wish. It is also possible to make use of [private base images](#private-base-images).
 
 __Note:__ Currently `{{$names.company.lower}} deploy` does not support the [build time secrets](#build-time-secrets-and-variables) feature.
-
-It's also possible to use the `{{$names.company.lower}} build` command without actually deploying. This command has all the same functionality as `{{$names.company.lower}} deploy`, but it does not upload the images to the registry or create a release on the API. This command can be useful if you want your CI/CD system to first run built images through some testing and validation stage before finally doing the deploy.
 
 ### Additional Options
 
@@ -120,6 +120,8 @@ This option disables the uploading of all the service build logs to {{$names.clo
 #### `--source, -s <source>`
 
 The `--source` flag allows you do define a path to your source code folder. You should ensure your folder follows the [standard {{$names.company.lower}} project structure](#project-structure).
+
+Note: Refer to the [`{{$names.company.lower}} build`][cli-build-reference] and [`{{$names.company.lower}} deploy`][cli-deploy-reference] command references for additional documentation.
 
 ## Git Push
 
@@ -290,6 +292,10 @@ Much like with the device list, [filters][filters] can be added to the release l
 [arm]:https://en.wikipedia.org/wiki/ARM_architecture
 [continuous-deployment]:https://en.wikipedia.org/wiki/Continuous_deployment
 [cli]:/reference/cli/#install-the-cli
+[cli-reference]:/reference/balena-cli/#deprecation-policy
+[cli-push-reference]:/reference/balena-cli/#push-applicationordevice
+[cli-build-reference]:/reference/balena-cli/#build-source
+[cli-deploy-reference]:/reference/balena-cli/#build-source
 [cli-masterclass]:/learn/more/masterclasses/cli-masterclass/
 [development-image]:/reference/OS/overview/2.x/#development-vs-production-images
 [device-types]:/reference/base-images/devicetypes/
