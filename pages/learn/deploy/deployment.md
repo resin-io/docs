@@ -31,7 +31,7 @@ Note: Refer to the [`{{$names.company.lower}} push` command reference][cli-push-
 
 ### Overview
 
-The `{{$names.company.lower}} deploy` and `{{$names.company.lower}} build` commands are functionally very similar to [{{$names.company.lower}} push](#balena-push) but avoid pushing any source code to the [{{$names.cloud.lower}} build server](#the-balenacloud-build-server). It gives more control over how and where your container images are built, which allows integrating your own [CI/CD][continuous-deployment] build system.
+The `{{$names.company.lower}} deploy` is functionally very similar to [{{$names.company.lower}} push](#balena-push) but avoids pushing any source code to the [{{$names.cloud.lower}} build server](#the-balenacloud-build-server). It gives more control over how and where your container images are built, allowing for `{{$names.company.lower}} deploy` to be integrated into your own [CI/CD][continuous-deployment] build system.
 
 ![How {{$names.company.lower}} deploy works](/img/common/deployment/balena-deploy.jpg)
 
