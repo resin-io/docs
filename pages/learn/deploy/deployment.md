@@ -25,7 +25,7 @@ Once the cloud builder has successfully completed building all the images in the
 
 It should be noted that `{{$names.company.lower}} push` is independent of git, so you are free to use any version control system you wish. This also means that it is possible to use [git submodules][git-submodules] in your project when deploying with `{{$names.company.lower}} push`.
 
-Note: Refer to the [`{{$names.company.lower}} push` command reference][cli-push-reference] for additional documentation.
+__Note:__ Refer to the [`{{$names.company.lower}} push` command reference][cli-push-reference] for additional documentation.
 
 ## {{$names.company.upper}} Build & Deploy
 
