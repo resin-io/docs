@@ -60,7 +60,7 @@ When an application needs to be shared with more than one user, the application 
 
 ### Member types
 
-| Member Type   | Add members   | Delete App  | Add/Remove device  | Device actions  | Tags | Dev Env Variables | SSH access | Push | Fleet Env Variables | Fleet actions |
+| Member Type   | [Add members][administrator]   | Delete App  | Add/Remove device  | [Device actions][device-actions]  | [Tags][tags] | [Env Variables][env-variables] | [SSH access][ssh-access] | [Push][deploy] | [Fleet Variables][fleet-variables] | Fleet actions |
 | ------------- |:-------------:| ----:| ----:| ----:| ----:| ----:| ----:| ----:| ----:| ----:|
 | Administrator | Yes      | Yes  | Yes  | Yes  | Yes  | Yes | Yes | Yes | Yes | Yes |
 | Developer     | No       | No   | Yes  | Yes  | Yes  | Yes | Yes | Yes | Yes | Yes |
@@ -174,6 +174,12 @@ If you wish to delete your {{ $names.cloud.lower }} account, go to your [_Prefer
 [ssh]:/learn/manage/ssh-access
 [starter]:/learn/manage/app-types#starter
 [administrator]: /learn/manage/organizations/#managing-roles--access-in-an-organization
+[device-actions]:/learn/manage/actions/
+[env-variables]:/learn/manage/serv-vars/
+[fleet-variables]:/learn/manage/configuration/
+[ssh-access]:/learn/manage/ssh-access/
+[deploy]:/learn/deploy/deployment/
+[tags]:/learn/manage/filters-tags/
 
 [signup]:{{ $links.dashboardUrl }}/signup
 [login]:{{ $links.dashboardUrl }}/login
