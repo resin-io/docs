@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 5.27.5 - 2021-07-06
 
-* patch: bump webpack from 5.42.0 to 5.42.1 [dependabot[bot]]
+* patch: Add links to member table [Vipul Gupta (@vipulgupta2048)]
 
 ## 5.27.4 - 2021-07-05
 
